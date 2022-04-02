@@ -19,15 +19,20 @@ namespace Ploomes.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             {
                 property.Relational().ColumnType = "VARCHAR(100)";
             }
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataDbContext).Assembly);
+
             foreach (var relations in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relations.DeleteBehavior = DeleteBehavior.ClientSetNull;
             }
+            base.OnModelCreating(modelBuilder);
         }
 
 

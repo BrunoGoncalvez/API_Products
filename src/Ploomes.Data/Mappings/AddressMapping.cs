@@ -19,6 +19,7 @@ namespace Ploomes.Data.Mappings
             builder.Property(a => a.Neighborhood).IsRequired().HasColumnType("VARCHAR(200)");
             builder.Property(a => a.City).IsRequired().HasColumnType("VARCHAR(200)");
             builder.Property(a => a.State).IsRequired().HasColumnType("VARCHAR(200)");
+            builder.ToTable("Address");
         }
     }
 }

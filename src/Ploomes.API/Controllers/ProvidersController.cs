@@ -16,11 +16,14 @@ namespace Ploomes.API.Controllers
 
         private readonly IProviderRepository _providerRepository;
         private readonly IProviderService _providerService;
+        private readonly IAddressRepository _addressRepository;
         private readonly IMapper _mapper;
 
-        public ProvidersController(IProviderRepository providerRepository, IProviderService providerService, IMapper mapper)
+        public ProvidersController(IProviderRepository providerRepository, IProviderService providerService,
+                                    IAddressRepository addressRepository, IMapper mapper)
         {
             _providerRepository = providerRepository;
+            _addressRepository = addressRepository;
             _providerService = providerService;
             _mapper = mapper;
         }
@@ -69,6 +72,7 @@ namespace Ploomes.API.Controllers
         {
             var provider = await GetProviderWithAddress(id);
             if (provider == null) return NotFound();
+            await _addressRepository.Remove(provider.Address.Id);
             var result = await _providerService.Remove(id);
             if (!result) return BadRequest();
             return Ok(provider);

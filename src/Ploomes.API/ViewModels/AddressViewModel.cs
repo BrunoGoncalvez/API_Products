@@ -16,7 +16,7 @@ namespace Ploomes.API.ViewModels
         public string Street { get; set; }
 
         [Required(ErrorMessage = "{0} required")]
-        [StringLength(100, ErrorMessage = "The field must be between {2} and {1} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The field must be between {2} and {1} characters long.", MinimumLength = 1)]
         public string Number { get; set; }
 
         public string Additional { get; set; }

@@ -6,6 +6,6 @@ namespace Ploomes.Business.Models.Enums
 
         Individual = 1,
         Company
-
+            
     }
 }

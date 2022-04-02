@@ -38,3 +38,13 @@ C:\Users\Bruno\Desktop\MyAPI\ApplicationAPI\src\Ploomes.Business\obj\Debug\netco
 C:\Users\Bruno\Desktop\MyAPI\ApplicationAPI\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.csproj.CoreCompileInputs.cache
 C:\Users\Bruno\Desktop\MyAPI\ApplicationAPI\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.dll
 C:\Users\Bruno\Desktop\MyAPI\ApplicationAPI\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.pdb
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\bin\Debug\netcoreapp2.2\Ploomes.Business.deps.json
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\bin\Debug\netcoreapp2.2\Ploomes.Business.dll
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\bin\Debug\netcoreapp2.2\Ploomes.Business.pdb
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.csproj.AssemblyReference.cache
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.AssemblyInfoInputs.cache
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.AssemblyInfo.cs
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.csproj.CoreCompileInputs.cache
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.dll
+C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Business\obj\Debug\netcoreapp2.2\Ploomes.Business.pdb
