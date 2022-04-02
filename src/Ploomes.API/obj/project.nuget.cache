@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Wi2G4qhYDCu/Pey+dPmnRL9fVqnLb5ns6lzpaXKCJZUdiTlgEdIED5M/wSVGBzSj/6IHvL3NaZhEVWUCu71dyQ==",
+  "dgSpecHash": "ObEKKphf1VqoxVxbHRdjVNr3iykBf1Q/XFtlNQTpll4LHy/EKMqvkOlm8m0VJRjdObapFcFX0gRwTvMaTiyoNQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\Desktop\\MyAPI\\ApplicationAPI\\src\\Ploomes.API\\Ploomes.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\automapper\\8.1.0\\automapper.8.1.0.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.0\\automapper.extensions.microsoft.dependencyinjection.6.1.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",

@@ -33,6 +33,9 @@ namespace Ploomes.API.ViewModels
         public DateTime RegistrationDate { get; set; }
 
         public bool Active { get; set; }
+        
+        [ScaffoldColumn(false)]
+        public string ProviderName { get; set; }
 
     }
 }

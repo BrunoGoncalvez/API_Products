@@ -22,45 +22,47 @@ namespace Ploomes.Business.Services
             _addressRepository = addressRepository;
         }
 
-        public async Task Add(Provider provider)
+        public async Task<bool> Add(Provider provider)
         {
             if (!RunValidation(new ProviderValidation(), provider) || !RunValidation(new AddressValidation(), provider.Address))
             {
-                return;
+                return false;
             }
 
             if(_providerRepository.Search(p => p.Identification == provider.Identification).Result.Any())
             {
                 Notify("Provider already registered.");
-                return;
+                return false;
             }
 
             await _providerRepository.Add(provider);
-
+            return true;
         }
 
-        public async Task Remove(Guid id)
+        public async Task<bool> Remove(Guid id)
         {
             if (_providerRepository.GetProviderWithProductsAndAddress(id).Result.Products.Any())
             {
                 Notify("Provider has registered products.");
-                return;
+                return false;
             }
 
             await _providerRepository.Remove(id);
+            return true;
 
         }
 
-        public async Task Update(Provider provider)
+        public async Task<bool> Update(Provider provider)
         {
-            if (!RunValidation(new ProviderValidation(), provider)) return;
+            if (!RunValidation(new ProviderValidation(), provider)) return false;
             if(_providerRepository.Search(p => p.Identification == provider.Identification && p.Id != provider.Id).Result.Any())
             {
                 Notify("Provider already registered.");
-                return;
+                return false;
             }
 
             await _providerRepository.Update(provider);
+            return true;
         }
 
         public async Task UpdateAddress(Address address)
