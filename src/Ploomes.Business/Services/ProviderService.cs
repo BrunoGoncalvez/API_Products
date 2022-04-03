@@ -41,12 +41,14 @@ namespace Ploomes.Business.Services
 
         public async Task<bool> Remove(Guid id)
         {
-            if (_providerRepository.GetProviderWithProductsAndAddress(id).Result.Products.Any())
+            var provider = await _providerRepository.GetProviderWithProductsAndAddress(id);
+            if (provider.Products.Any())
             {
                 Notify("Provider has registered products.");
                 return false;
             }
-
+            
+            if (provider.Address != null) await _addressRepository.Remove(provider.Address.Id);
             await _providerRepository.Remove(id);
             return true;
 

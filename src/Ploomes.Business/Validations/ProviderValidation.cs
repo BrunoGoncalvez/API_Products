@@ -18,16 +18,16 @@ namespace Ploomes.Business.Validations
             When(p => p.ProviderType == ProviderType.Individual, () => 
             {
                 RuleFor(p => p.Identification.Length).Equal(CpfValidacao.TamanhoCpf)
-                    .WithMessage("Invalid CPF");
+                    .WithMessage("{PropertyName} must be 11 caracteres");
                 RuleFor(p => CpfValidacao.Validar(p.Identification)).Equal(true)
-                    .WithMessage("Invalid CPF");
+                    .WithMessage("Identification already registered.");
             });
             When(p => p.ProviderType == ProviderType.Company, () => 
             {
                 RuleFor(p => p.Identification.Length).Equal(CnpjValidacao.TamanhoCnpj)
-                    .WithMessage("CNPJ Invalid");
+                    .WithMessage("{PropertyName} must be 14 caracteres");
                 RuleFor(p => CnpjValidacao.Validar(p.Identification)).Equal(true)
-                    .WithMessage("CNPJ Invalid");
+                    .WithMessage("Identification already registered.");
             });
         }
 

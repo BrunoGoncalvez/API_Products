@@ -13,7 +13,7 @@ namespace Ploomes.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(type: "VARCHAR(200)", nullable: false),
-                    Identification = table.Column<string>(type: "VARCHAR(14)", nullable: false),
+                    Identification = table.Column<string>(type: "VARCHAR(14)", nullable: true),
                     ProviderType = table.Column<int>(nullable: false),
                     Active = table.Column<bool>(nullable: false)
                 },

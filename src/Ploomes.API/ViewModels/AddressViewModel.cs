@@ -34,7 +34,7 @@ namespace Ploomes.API.ViewModels
         public string City { get; set; }
 
         [Required(ErrorMessage = "{0} required")]
-        [StringLength(100, ErrorMessage = "The field must be between {2} and {1} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The field must be between {2} and {1} characters long.", MinimumLength = 2)]
         public string State { get; set; }
 
         public Guid ProviderId { get; set; }

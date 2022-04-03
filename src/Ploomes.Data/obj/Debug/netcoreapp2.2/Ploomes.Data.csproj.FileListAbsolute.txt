@@ -63,3 +63,16 @@ C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Plo
 C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.csproj.CopyComplete
 C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.dll
 C:\Users\HomeP\Desktop\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.pdb
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\bin\Debug\netcoreapp2.2\Ploomes.Data.deps.json
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\bin\Debug\netcoreapp2.2\Ploomes.Data.dll
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\bin\Debug\netcoreapp2.2\Ploomes.Data.pdb
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\bin\Debug\netcoreapp2.2\Ploomes.Business.dll
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\bin\Debug\netcoreapp2.2\Ploomes.Business.pdb
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.csproj.AssemblyReference.cache
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.AssemblyInfoInputs.cache
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.AssemblyInfo.cs
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.csproj.CopyComplete
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.dll
+C:\Users\Bruno\Desktop\MyAPI\API_Products\src\Ploomes.Data\obj\Debug\netcoreapp2.2\Ploomes.Data.pdb
