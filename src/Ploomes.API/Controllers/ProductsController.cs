@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ploomes.API.ViewModels;
 using Ploomes.Business.Interfaces;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace Ploomes.API.Controllers
 {
 
+    [Authorize]
     [Route("api/[controller]")]
     public class ProductsController : MainController
     {
@@ -30,12 +32,14 @@ namespace Ploomes.API.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<ProductViewModel>> GetAll()
         {
             return _mapper.Map<IEnumerable<ProductViewModel>>(await _productRepository.GetProductsWithProviders()); 
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<ProductViewModel>> GetById(Guid id)
         {
@@ -56,6 +60,36 @@ namespace Ploomes.API.Controllers
             return CustomResponse(productViewModel);
         }
 
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult> Update(Guid id, ProductViewModel productViewModel)
+        {
+            if (id != productViewModel.Id) return BadRequest();
+
+            var updateProduct = await GetProduct(id);
+            productViewModel.Image = updateProduct.Image;
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            if(productViewModel.ImageUpload != null)
+            {
+                var imgName = Guid.NewGuid() + "_" + productViewModel.Image;
+                if(!UploadFile(productViewModel.ImageUpload, imgName))
+                {
+                    return CustomResponse(ModelState);
+                }
+
+                updateProduct.Image = imgName;
+            }
+
+            updateProduct.Name = productViewModel.Name;
+            updateProduct.Description = productViewModel.Description;
+            updateProduct.Price = productViewModel.Price;
+            updateProduct.Active = productViewModel.Active;
+
+            await _productService.Update(_mapper.Map<Product>(updateProduct));
+            return CustomResponse(productViewModel);
+        }
+
 
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<ProductViewModel>> Delete(Guid id)
@@ -70,15 +104,16 @@ namespace Ploomes.API.Controllers
 
 
         private bool UploadFile(string file, string imgName)
-        {
-            var imageDataByteArray = Convert.FromBase64String(file);
+        {            
             if(string.IsNullOrEmpty(file))
             {
                 NotifyError("Enter a image!");
                 return false;
             }
 
+            var imageDataByteArray = Convert.FromBase64String(file);
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", imgName);
+
             if (System.IO.File.Exists(filePath))
             {
                 NotifyError("Image already registered.");
@@ -87,7 +122,6 @@ namespace Ploomes.API.Controllers
 
             System.IO.File.WriteAllBytes(filePath, imageDataByteArray);
             return true;
-
         }
 
         private async Task<ProductViewModel> GetProduct(Guid id)

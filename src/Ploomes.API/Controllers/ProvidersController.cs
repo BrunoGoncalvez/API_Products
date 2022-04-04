@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ploomes.API.ViewModels;
 using Ploomes.Business.Interfaces;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ploomes.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ProvidersController : MainController
     {
@@ -28,6 +30,7 @@ namespace Ploomes.API.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<ProviderViewModel>> GetAll()
         {
@@ -35,6 +38,7 @@ namespace Ploomes.API.Controllers
             return providers;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<ProviderViewModel>> GetById(Guid id)
         {
