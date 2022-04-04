@@ -45,6 +45,7 @@ namespace Ploomes.API
 
             app.UseHttpsRedirection();
             app.UseCors("Development");
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

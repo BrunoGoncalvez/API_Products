@@ -1,26 +1,33 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Ploomes.API.Extensions;
 using Ploomes.API.ViewModels;
 using Ploomes.Business.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Ploomes.API.Controllers
 {
-    [Route("api/)]
+    [Route("api/")]
     public class AuthController : MainController
     {
 
         private readonly SignInManager<IdentityUser> _signManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly AppSettings _appSettings;
 
-        public AuthController(INotifier notifier, SignInManager<IdentityUser> signManager, UserManager<IdentityUser> userManager) 
-            : base(notifier)
+        public AuthController(INotifier notifier, SignInManager<IdentityUser> signManager, 
+            UserManager<IdentityUser> userManager, IOptions<AppSettings> appSettings): base(notifier)
         {
             _signManager = signManager;
             _userManager = userManager;
+            _appSettings = appSettings.Value;
         }
 
         [HttpPost("register")]
@@ -58,7 +65,7 @@ namespace Ploomes.API.Controllers
 
             if (result.Succeeded)
             {
-                return CustomResponse();
+                return CustomResponse(GenerateJwt());
             }
 
             if (result.IsLockedOut)
@@ -72,6 +79,25 @@ namespace Ploomes.API.Controllers
 
         }
 
+        public string GenerateJwt()
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
+            {
+                Issuer = _appSettings.Issuer,
+                Audience = _appSettings.ValidIn,
+                Expires = DateTime.UtcNow.AddHours(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            });
 
+            var encodedToken = tokenHandler.WriteToken(token);
+            return encodedToken;
+        }
+
+    }
+
+    internal class AppSettins
+    {
     }
 }

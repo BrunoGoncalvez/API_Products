@@ -21,4 +21,15 @@ namespace Ploomes.API.ViewModels
         public string ConfirmPassword { get; set; }
 
     }
+
+    public class LoginUserViewModel
+    {
+        [Required(ErrorMessage = "{0} required")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "{0} required")]
+        [StringLength(100, ErrorMessage = "{0} must be between {2} and {1} digits", MinimumLength = 6)]
+        public string Password { get; set; }
+    }
 }
