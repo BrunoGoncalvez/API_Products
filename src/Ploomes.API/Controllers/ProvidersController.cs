@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Ploomes.API.Extensions;
 using Ploomes.API.ViewModels;
 using Ploomes.Business.Interfaces;
 using Ploomes.Business.Models;
@@ -30,7 +31,6 @@ namespace Ploomes.API.Controllers
             _mapper = mapper;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<ProviderViewModel>> GetAll()
         {
@@ -47,7 +47,7 @@ namespace Ploomes.API.Controllers
             return CustomResponse(provider);
         }
 
-
+        [ClaimsAuthorize("Provider","Create")]
         [HttpPost]
         public async Task<ActionResult<ProviderViewModel>> Create(ProviderViewModel providerViewModel)
         {
@@ -56,7 +56,7 @@ namespace Ploomes.API.Controllers
             return CustomResponse(providerViewModel);
         }
 
-
+        [ClaimsAuthorize("Provider", "Update")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<ProviderViewModel>> Update(Guid id, ProviderViewModel providerViewModel)
         {
@@ -66,6 +66,7 @@ namespace Ploomes.API.Controllers
             return CustomResponse(providerViewModel);
         }
 
+        [ClaimsAuthorize("Provider", "Delete")]
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<ProviderViewModel>> Delete(Guid id)
         {
@@ -75,6 +76,7 @@ namespace Ploomes.API.Controllers
             return CustomResponse();
         }
 
+        [AllowAnonymous]
         [HttpGet("get-address/{id:guid}")]
         public async Task<AddressViewModel> GetAddressById(Guid id)
         {
@@ -82,6 +84,7 @@ namespace Ploomes.API.Controllers
             return addressViewModel;
         }
 
+        [ClaimsAuthorize("Provider", "Update")]
         [HttpPut("update-address/{id:guid}")]
         public async Task<IActionResult> UpdateAddress(Guid id, AddressViewModel addressViewModel)
         {
